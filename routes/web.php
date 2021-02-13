@@ -14,3 +14,16 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    
+  $router->get('addressee',  ['uses' => 'AddresseeController@showAll']);
+
+  $router->get('addressee/{id}', ['uses' => 'AddresseeController@showOne']);
+
+  $router->post('addressee', ['uses' => 'AddresseeController@create']);
+
+  $router->delete('addressee/{id}', ['uses' => 'AddresseeController@delete']);
+
+  $router->put('addressee/{id}', ['uses' => 'AddresseeController@update']);
+});
