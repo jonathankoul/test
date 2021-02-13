@@ -35,9 +35,20 @@ class AddresseeController extends Controller{
      * 
      * @param Request $request
      * @return type
+     * 
      */
     public function create(Request $request)
     {
+        /**
+         * Beefed up validation
+         */
+        $this->validate($request,[
+            'first_name' => 'required',
+            'last_name'  => 'required',
+            'phone'      => 'required|regex:/(01)[0-9]{9}/',
+            'email'      => 'required|email'
+            ]);
+        
         $addressee = Addressee::create($request->all());
 
         return response()->json($addressee, 201);
