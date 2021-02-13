@@ -26,5 +26,5 @@ class Addressee extends Model
      * Hide Timestamp variables from being displayed in JSON form (ID, created_at, updated_at)
      * @var array
      */
-    protected $hidden = [];
+    protected $hidden = ['id','created_at','updated_at'];
 }
